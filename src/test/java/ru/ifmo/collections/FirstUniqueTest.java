@@ -19,7 +19,6 @@ public class FirstUniqueTest {
         firstUnique.add(4);
         assertThat(firstUnique.showFirstUnique(), is(-1));
     }
-
     @Test
     public void firstUniqueTest_emptyInitialization() {
         FirstUnique firstUnique = new FirstUnique(new int[0]);

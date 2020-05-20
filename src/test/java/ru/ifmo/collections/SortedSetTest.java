@@ -19,5 +19,5 @@ public class SortedSetTest {
         assertThat(set.getSorted(), is(Arrays.asList(1, 2, 5, 7, 8)));
         set.removeAll(Arrays.asList(1, 1, 1, 1, 0));
         assertThat(set.getReversed(), is(Arrays.asList(8, 7, 5, 2)));
-    }
+}
 }

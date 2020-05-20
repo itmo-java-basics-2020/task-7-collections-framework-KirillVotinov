@@ -30,6 +30,6 @@ public class LruCacheTest {
 
         assertThat(Arrays.stream(cache.getClass().getDeclaredMethods())
                 .filter(method -> Modifier.isPublic(method.getModifiers()))
-                .count(), is(3L));
+                .count(), is(1L));
     }
 }
