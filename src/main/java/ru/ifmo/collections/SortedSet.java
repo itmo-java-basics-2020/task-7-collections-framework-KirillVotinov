@@ -1,7 +1,16 @@
 package ru.ifmo.collections;
 
 
-import java.util.*;
+import java.util.AbstractSet;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Spliterator;
+import java.util.TreeMap;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
@@ -40,8 +49,8 @@ public final class SortedSet<T> extends AbstractSet<T> {
     }
 
     public List<T> getReversed() {
-        List<T> list = getSorted();
-        list.sort(Collections.reverseOrder());
+        List<T> list = new ArrayList<>(contents.keySet());
+        Collections.reverse(list);
         return list;
     }
 
@@ -51,16 +60,14 @@ public final class SortedSet<T> extends AbstractSet<T> {
         if (!isInContents) {
             contents.put(tempItem, 1);
         }
-        return isInContents;
+        return !isInContents;
     }
 
     @Override
     public boolean addAll(Collection<? extends T> collectionOfItems) {
         boolean hasChanged = false;
-        for (var item : collectionOfItems) {
-            if (add(item)) {
-                hasChanged = true;
-            }
+        for (T item : collectionOfItems) {
+                hasChanged = add(item);
         }
         return hasChanged;
     }

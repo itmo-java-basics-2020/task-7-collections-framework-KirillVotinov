@@ -18,16 +18,13 @@ public class FirstUnique {
     }
 
     public int showFirstUnique() {
-        for(Map.Entry<Integer, Integer> pair : counters.entrySet())
-            if(pair.getValue() == 1)
+        for (Map.Entry<Integer, Integer> pair : counters.entrySet())
+            if (pair.getValue() == 1)
                 return pair.getKey();
         return -1;
     }
 
     public void add(int value) {
-        if(counters.containsKey(value))
-            counters.replace(value, counters.get(value) + 1);
-        else
-            counters.put(value, 1);
+        counters.compute(value, (key, val) -> (val != null) ? val + 1 : 1);
     }
 }
